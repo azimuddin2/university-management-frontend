@@ -22,7 +22,7 @@ const MainLayout = () => {
                     justifyContent: 'right',
                     alignItems: 'center',
                 }} >
-                    <Button onClick={handleLogout}>Logout</Button>
+                    <Button type="primary" onClick={handleLogout}>Logout</Button>
                 </Header>
                 <Content style={{ margin: '24px 16px 0' }}>
                     <div
