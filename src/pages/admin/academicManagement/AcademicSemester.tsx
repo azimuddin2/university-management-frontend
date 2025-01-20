@@ -2,12 +2,11 @@ import { useGetAllSemestersQuery } from "../../../redux/features/academicSemeste
 
 const AcademicSemester = () => {
     const {data} = useGetAllSemestersQuery(undefined);
-
     console.log(data)
 
     return (
         <div>
-            <h2>This is academic semester</h2>
+            <h2>Academic Semester View</h2>
         </div>
     );
 };
