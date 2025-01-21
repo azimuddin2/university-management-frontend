@@ -12,8 +12,15 @@ const PHInput = ({ type, name, label }: TInputProps) => {
         <Controller
             name={name}
             render={({ field }) => (
-                <Form.Item style={{marginBottom: "12px"}} label={label}>
-                    <Input {...field} type={type} id={name} required />
+                <Form.Item style={{ marginBottom: "12px" }} label={label}>
+                    <Input
+                        {...field}
+                        type={type}
+                        id={name}
+                        style={{ width: "100%" }}
+                        size="large"
+                        required
+                    />
                 </Form.Item>
             )}
         />
