@@ -1,5 +1,6 @@
 import { Form, Select } from "antd";
 import { Controller } from "react-hook-form";
+import { MdErrorOutline } from "react-icons/md";
 
 type TPHSelectProps = {
     label: string;
@@ -16,7 +17,7 @@ const PHSelect = ({ label, name, options }: TPHSelectProps) => {
     return (
         <Controller
             name={name}
-            render={({ field }) => (
+            render={({ field, fieldState: { error } }) => (
                 <Form.Item label={label} style={{ marginBottom: "12px" }}>
                     <Select
                         style={{ width: "100%" }}
@@ -24,6 +25,17 @@ const PHSelect = ({ label, name, options }: TPHSelectProps) => {
                         options={options}
                         size="large"
                     />
+                    {error && <div
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            color: "red",
+                            marginTop: "2px"
+                        }}
+                    >
+                        <MdErrorOutline style={{ fontSize: "18px", marginRight: '1px' }} />
+                        <span>{error.message}</span>
+                    </div>}
                 </Form.Item>
             )}
         />

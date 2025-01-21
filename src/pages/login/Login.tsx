@@ -7,7 +7,9 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import PHForm from "../../components/form/PHForm";
 import PHInput from "../../components/form/PHInput";
-import { Button, Row } from "antd";
+import { Button, Col, Flex } from "antd";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginFormSchema } from "../../schemas/loginForm.schema";
 
 const Login = () => {
     const dispatch = useAppDispatch();
@@ -36,14 +38,19 @@ const Login = () => {
     };
 
     return (
-        <Row justify="center" align="middle" style={{ height: "100vh" }}>
-            <PHForm onSubmit={onSubmit}>
-                <h2 style={{ marginBottom: "12px", fontSize: "24px" }}>Login</h2>
-                <PHInput type="text" name="userId" label="Id" />
-                <PHInput type="text" name="password" label="Password" />
-                <Button type="primary" htmlType="submit">Login</Button>
-            </PHForm>
-        </Row>
+        <Flex justify="center" align="center" style={{ height: "100vh" }}>
+            <Col sm={18} lg={6}>
+                <PHForm
+                    onSubmit={onSubmit}
+                    resolver={zodResolver(loginFormSchema)}
+                >
+                    <h2 style={{ marginBottom: "12px", fontSize: "30px" }}>Login</h2>
+                    <PHInput type="text" name="userId" label="Id" />
+                    <PHInput type="text" name="password" label="Password" />
+                    <Button type="primary" htmlType="submit">Login</Button>
+                </PHForm>
+            </Col>
+        </Flex>
     );
 };
 

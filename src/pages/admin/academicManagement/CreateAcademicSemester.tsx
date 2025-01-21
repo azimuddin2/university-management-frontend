@@ -4,6 +4,8 @@ import PHSelect from "../../../components/form/PHSelect";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { monthOptions } from "../../../constants/global";
 import { semesterOptions } from "../../../constants/semester";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { academicSemesterSchema } from "../../../schemas/academicManagement.schema";
 
 const currentYear = new Date().getFullYear();
 const yearOptions = [0, 1, 2, 3, 4, 5].map((number) => ({
@@ -31,11 +33,30 @@ const CreateAcademicSemester = () => {
             <h2>Create Academic Semester</h2>
             <Flex justify="center" align="center">
                 <Col sm={18} lg={8}>
-                    <PHForm onSubmit={onSubmit}>
-                        <PHSelect label="Name" name="name" options={semesterOptions} />
-                        <PHSelect label="Year" name="year" options={yearOptions} />
-                        <PHSelect label="Start Month" name="startMonth" options={monthOptions} />
-                        <PHSelect label="End Month" name="endMonth" options={monthOptions} />
+                    <PHForm
+                        onSubmit={onSubmit}
+                        resolver={zodResolver(academicSemesterSchema)}
+                    >
+                        <PHSelect
+                            label="Name"
+                            name="name"
+                            options={semesterOptions}
+                        />
+                        <PHSelect
+                            label="Year"
+                            name="year"
+                            options={yearOptions}
+                        />
+                        <PHSelect
+                            label="Start Month"
+                            name="startMonth"
+                            options={monthOptions}
+                        />
+                        <PHSelect
+                            label="End Month"
+                            name="endMonth"
+                            options={monthOptions}
+                        />
                         <Button type="primary" htmlType="submit">Submit</Button>
                     </PHForm>
                 </Col>

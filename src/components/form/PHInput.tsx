@@ -1,5 +1,6 @@
 import { Form, Input } from "antd";
 import { Controller } from "react-hook-form";
+import { MdErrorOutline } from "react-icons/md";
 
 type TInputProps = {
     type: string;
@@ -11,7 +12,7 @@ const PHInput = ({ type, name, label }: TInputProps) => {
     return (
         <Controller
             name={name}
-            render={({ field }) => (
+            render={({ field, fieldState: { error } }) => (
                 <Form.Item style={{ marginBottom: "12px" }} label={label}>
                     <Input
                         {...field}
@@ -19,8 +20,18 @@ const PHInput = ({ type, name, label }: TInputProps) => {
                         id={name}
                         style={{ width: "100%" }}
                         size="large"
-                        required
                     />
+                    {error && <div
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            color: "red",
+                            marginTop: "2px"
+                        }}
+                    >
+                        <MdErrorOutline style={{ fontSize: "18px", marginRight: '2px' }} />
+                        <span>{error.message}</span>
+                    </div>}
                 </Form.Item>
             )}
         />
