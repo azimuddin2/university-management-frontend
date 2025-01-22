@@ -1,5 +1,5 @@
-import MainLayout from "./components/layout/MainLayout"
-import ProtectedRoute from "./components/layout/ProtectedRoute"
+import MainLayout from './components/layout/MainLayout';
+import ProtectedRoute from './components/layout/ProtectedRoute';
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
         <MainLayout />
       </ProtectedRoute>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

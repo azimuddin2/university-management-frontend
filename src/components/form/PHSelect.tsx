@@ -1,45 +1,48 @@
-import { Form, Select } from "antd";
-import { Controller } from "react-hook-form";
-import { MdErrorOutline } from "react-icons/md";
+import { Form, Select } from 'antd';
+import { Controller } from 'react-hook-form';
+import { MdErrorOutline } from 'react-icons/md';
 
 type TPHSelectProps = {
+  label: string;
+  name: string;
+  options: {
+    value: string;
     label: string;
-    name: string;
-    options: {
-        value: string;
-        label: string;
-        disabled?: boolean;
-    }[];
-}
+    disabled?: boolean;
+  }[];
+};
 
 const PHSelect = ({ label, name, options }: TPHSelectProps) => {
-
-    return (
-        <Controller
-            name={name}
-            render={({ field, fieldState: { error } }) => (
-                <Form.Item label={label} style={{ marginBottom: "12px" }}>
-                    <Select
-                        style={{ width: "100%" }}
-                        {...field}
-                        options={options}
-                        size="large"
-                    />
-                    {error && <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            color: "red",
-                            marginTop: "2px"
-                        }}
-                    >
-                        <MdErrorOutline style={{ fontSize: "18px", marginRight: '1px' }} />
-                        <span>{error.message}</span>
-                    </div>}
-                </Form.Item>
-            )}
-        />
-    );
+  return (
+    <Controller
+      name={name}
+      render={({ field, fieldState: { error } }) => (
+        <Form.Item label={label} style={{ marginBottom: '12px' }}>
+          <Select
+            style={{ width: '100%' }}
+            {...field}
+            options={options}
+            size="large"
+          />
+          {error && (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                color: 'red',
+                marginTop: '2px',
+              }}
+            >
+              <MdErrorOutline
+                style={{ fontSize: '18px', marginRight: '1px' }}
+              />
+              <span>{error.message}</span>
+            </div>
+          )}
+        </Form.Item>
+      )}
+    />
+  );
 };
 
 export default PHSelect;
