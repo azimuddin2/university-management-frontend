@@ -129,6 +129,8 @@ const AcademicSemester = () => {
         columns={columns}
         dataSource={tableData}
         onChange={onChange}
+        pagination={{ position: ['bottomCenter'] }}
+        scroll={{ x: 'max-content' }}
         showSorterTooltip={{ target: 'sorter-icon' }}
       />
     </div>

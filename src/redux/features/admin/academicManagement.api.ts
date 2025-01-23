@@ -4,6 +4,13 @@ import { baseApi } from '../../api/baseApi';
 
 const academicManagementApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    addAcademicSemester: builder.mutation({
+      query: (data) => ({
+        url: '/academic-semesters/create-academic-semester',
+        method: 'POST',
+        body: data,
+      }),
+    }),
     getAllSemesters: builder.query({
       query: (args) => {
         const params = new URLSearchParams();
@@ -27,9 +34,9 @@ const academicManagementApi = baseApi.injectEndpoints({
         };
       },
     }),
-    addAcademicSemester: builder.mutation({
+    addAcademicFaculty: builder.mutation({
       query: (data) => ({
-        url: '/academic-semesters/create-academic-semester',
+        url: '/academic-faculties/create-academic-faculty',
         method: 'POST',
         body: data,
       }),
@@ -37,5 +44,8 @@ const academicManagementApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetAllSemestersQuery, useAddAcademicSemesterMutation } =
-  academicManagementApi;
+export const {
+  useAddAcademicSemesterMutation,
+  useGetAllSemestersQuery,
+  useAddAcademicFacultyMutation,
+} = academicManagementApi;
