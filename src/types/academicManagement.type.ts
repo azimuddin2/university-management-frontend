@@ -16,3 +16,12 @@ export type TAcademicFaculty = {
   updatedAt: string;
   __v: number;
 };
+
+export type TAcademicDepartment = {
+  name: string;
+  academicFaculty: TAcademicFaculty;
+  _id: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+};
