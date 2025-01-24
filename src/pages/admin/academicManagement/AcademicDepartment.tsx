@@ -48,7 +48,7 @@ const AcademicDepartment = () => {
     _filters,
     _sorter,
     _extra,
-  ) => { };
+  ) => {};
 
   return (
     <div>

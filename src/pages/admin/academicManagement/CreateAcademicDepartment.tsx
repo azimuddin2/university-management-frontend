@@ -10,6 +10,8 @@ import {
 import { TResponse } from '../../../types';
 import { toast } from 'sonner';
 import { TAcademicDepartment } from '../../../types/academicManagement.type';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { academicDepartmentSchema } from '../../../schemas/academicManagement.schema';
 
 const CreateAcademicDepartment = () => {
   const { data: academicFacultiesData, isLoading } =
@@ -52,7 +54,7 @@ const CreateAcademicDepartment = () => {
         <Col sm={18} lg={8}>
           <PHForm
             onSubmit={onSubmit}
-            // resolver={zodResolver(academicSemesterSchema)}
+            resolver={zodResolver(academicDepartmentSchema)}
           >
             <PHSelect
               label="Department"
